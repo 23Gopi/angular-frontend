@@ -1,0 +1,17 @@
+<div>
+    <h3>Update Post</h3>
+</div>
+<form>
+    <div class="form-group form-inline">
+        <b>Title:</b>
+        <input required class="form-control ml-2" type="text" name="title" [(ngModel)]="title" (input)="inputOnchange($event)" />
+    </div>
+    <div class="form-group form-inline">
+        <b>Body:</b>
+        <input required class="form-control ml-2" type="text" name="body" [(ngModel)]="body" (input)="inputOnchange($event)" />
+    </div>
+    <div *ngIf="errorMsg">
+        <p style="color: red;">{{errorMsg}}</p>
+    </div>
+    <button class="mrt-1" (click)="onClickUpdate()">Update Post</button>
+</form>

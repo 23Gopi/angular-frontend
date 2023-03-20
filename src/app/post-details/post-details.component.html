@@ -1,0 +1,34 @@
+<!-- <router-outlet></router-outlet> -->
+<form>
+  <div class="form-group form-inline">
+    Search post by title:
+    <input class="form-control ml-2" type="text" name="searchItem" [(ngModel)]="searchItem" (input)="search($event)" />
+  </div>
+</form>
+<table class="table table-bordered mt-1">
+  <thead>
+    <tr>
+      <!-- <th scope="col">USER ID</th> -->
+      <th scope="col">ID</th>
+      <th scope="col">BODY</th>
+      <th scope="col">TITLE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of postLists | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;">
+      <!-- <th scope="col">{{data.userId}}</th> -->
+      <td>{{data.id}}</td>
+      <td>{{data.body}}</td>
+      <td>{{data.title}}</td>
+      <td>
+        <div>
+          <button (click)="clickNew(data.userId)">New</button>
+          <button (click)="clickUpdate(data)">Update</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [maxSize]="5" [boundaryLinks]="true"
+  [pageSize]="pageSize" class="d-flex justify-content-center"></ngb-pagination>
+  
